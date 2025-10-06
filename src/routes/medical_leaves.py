@@ -7,7 +7,8 @@ from flask import Blueprint, request, jsonify
 from src.models.medical_leave import MedicalLeave
 
 medical_leaves_bp = Blueprint('medical_leaves', __name__)
-medical_leave_model = MedicalLeave()
+import os
+medical_leave_model = MedicalLeave(db_path=os.environ.get("DATABASE_URL", "/tmp/app.db"))
 
 @medical_leaves_bp.route('/api/medical-leaves', methods=['POST'])
 def create_medical_leave():
