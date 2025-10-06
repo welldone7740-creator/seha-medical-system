@@ -8,7 +8,9 @@ from datetime import datetime
 from typing import Optional, List, Dict, Any
 
 class MedicalLeave:
-    def __init__(self, db_path: str = "src/database/app.db"):
+    def __init__(self, db_path: str = None):
+        if db_path is None:
+            db_path = os.environ.get("DATABASE_URL", "/tmp/app.db")
         self.db_path = db_path
         self.init_database()
     
