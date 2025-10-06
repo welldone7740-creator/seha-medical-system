@@ -22,8 +22,7 @@ app.register_blueprint(medical_leaves_bp)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:////tmp/app.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db.init_app(app)
-with app.app_context():
-    db.create_all()
+
 
 @app.route('/admin')
 def admin_panel():
